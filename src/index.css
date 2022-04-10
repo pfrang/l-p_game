@@ -2,8 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Comforter&display=swap');
+
+
+:root {
+  --anim: rotate(90deg)
+}
+
+#wrapper {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  min-height: 100vh;
+}
+
+
+
+#output {
+  color: rgb(103, 177, 47);
+font-family: 'Bowlby One', cursive;
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  animation: mymove 2s ease-in ;
+}
+
+
+@keyframes mymove {
+  0% {
+    font-size: 2px;
+    transform: rotate(360deg);
+  }
+  50% {
+    font-size: 18px;
+  }
+
+  75% {
+    font-size: 24px;
+  }
+
+  100% {
+    font-size: 28px
+  }
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+
 body {
   margin: 0;
+  background-color: purple;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
