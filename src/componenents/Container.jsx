@@ -3,12 +3,7 @@ import {openAICall} from '../api-client/openaiclient'
 // import api from '../api-client/azure_func/HttpTrigger1'
 export default function Container() {
 
-  const [text, setText] = useState();
   const [submitText, setSubmitText] = useState();
-
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +31,6 @@ export default function Container() {
         <input className="border-2" type="submit" />
       </form>
 
-      <h2>{text}</h2>
       <h2>{submitText ? submitText : ""}</h2>
       </div>
   )

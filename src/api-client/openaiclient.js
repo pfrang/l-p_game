@@ -5,7 +5,7 @@ export const openAICall = async (input) => {
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY
 
   const configuration = new Configuration({
-    apiKey: apiKey ,
+    apiKey: apiKey,
   });
 
   const openai = new OpenAIApi(configuration);
