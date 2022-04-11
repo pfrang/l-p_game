@@ -22,11 +22,12 @@ export default function Container() {
       return alert("Please select an option from the dropdown menu!")
     }
     setisLoading(true)
-    // const call = await openAICall(dropdown)
-    // setResponse(call);
-    await waitFunc(500)
-    const text = "This is a test string string This is a test string string  This is a test string string  This is a test string string  "
-    setResponse(text);
+    const call = await openAICall(dropdown)
+    setResponse(call);
+    // Uncomment below for testing and comment two lines above
+    // await waitFunc(500)
+    // const call = "This is a test string string This is a test string string  This is a test string string  This is a test string string  "
+    setResponse(call);
     setisLoading(false);
   }
   return (
