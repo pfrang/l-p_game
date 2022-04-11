@@ -10,17 +10,17 @@
 }
 
 #wrapper {
-  padding: 20px;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  min-height: 100vh;
+  padding: 20px 50px;
+  /* grid-template-columns: 1fr 1fr; */
+  min-height: 80vh;
 }
 
-
+#dropdown {
+  width: 200px;
+}
 
 #output {
-  color: rgb(103, 177, 47);
-font-family: 'Bowlby One', cursive;
+
   /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   animation: mymove 2s ease-in ;
 }
@@ -50,6 +50,8 @@ h1 {
 
 h2 {
   font-size: 28px;
+  color: rgb(103, 177, 47);
+  font-family: 'Bowlby One', cursive;
 }
 
 
