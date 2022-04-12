@@ -10,8 +10,10 @@
 }
 
 #wrapper {
-  padding: 20px 50px;
-  /* grid-template-columns: 1fr 1fr; */
+  /* padding: 20px 50px; */
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 80vh;
 }
 
@@ -52,6 +54,11 @@ h2 {
   font-size: 28px;
   color: rgb(103, 177, 47);
   font-family: 'Bowlby One', cursive;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 50%;
 }
 
 
