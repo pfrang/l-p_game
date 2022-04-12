@@ -43,11 +43,11 @@ export default function Container() {
     setisLoading(true)
     // Uncomment below for testing and comment two lines above
     if(questions.length === questionIncrementer) {
-      // const call = await openAICall(dropdown)
-      // setResponse(call);
-      await waitFunc(500)
-      const timestamp = new Date().toTimeString().split(' ')[0]
-      const call = timestamp
+      const call = await openAICall(dropdown)
+      setResponse(call);
+      // await waitFunc(500)
+      // const timestamp = new Date().toTimeString().split(' ')[0]
+      // const call = timestamp
       setResponse(call);
       setQuestions(questions => [...questions, call]);
     } else {
