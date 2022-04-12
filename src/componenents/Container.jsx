@@ -17,8 +17,8 @@ export default function Container() {
     setDropdown(e.value);
   }
 
-  const handleSubmit = async (e) => {
-    if(!dropdown) {
+  const handleNextQuestion = async (e) => {
+    if (!dropdown) {
       return alert("Please select an option from the dropdown menu!")
     }
     setisLoading(true)
@@ -32,11 +32,15 @@ export default function Container() {
   }
   return (
     <>
-    <Header/>
-    <Dropdown onChange={handleDropdown} className='w-1/4 m-auto my-4' options={["Rule", "Dilemma", "Trivia Question", "Pointing Game Question"]} />
-    <div id="wrapper" className='flex justify-center items-center' onClick={handleSubmit}>
-        {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
-    </div>
+      <Header />
+      <Dropdown onChange={handleDropdown} className='w-1/4 m-auto my-4' options={["Rule", "Dilemma", "Trivia Question", "Pointing Game Question"]} />
+      {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
+      <div id="wrapper">
+        <div >
+        </div>
+        <div onClick={handleNextQuestion}>
+        </div >
+      </div>
     </>
   )
 }
