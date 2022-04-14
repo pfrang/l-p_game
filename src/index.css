@@ -21,10 +21,14 @@
   width: 200px;
 }
 
-#output {
+#wrapper-game-done {
+  position: relative;
+  min-height: 80vh;
+}
 
+#output {
   /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-  animation: mymove 2s ease-in ;
+  animation: mymove 2s ease-in;
 }
 
 
@@ -33,6 +37,7 @@
     font-size: 2px;
     transform: rotate(360deg);
   }
+
   50% {
     font-size: 18px;
   }
@@ -61,6 +66,9 @@ h2 {
   bottom: 50%;
 }
 
+button {
+  font-family: 'Bowlby One', cursive;
+}
 
 body {
   margin: 0;
