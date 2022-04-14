@@ -13,8 +13,9 @@
   /* padding: 20px 50px; */
   position: relative;
   display: grid;
+  margin: 0px 50px;
   grid-template-columns: 1fr 1fr;
-  min-height: 80vh;
+  min-height: 70vh;
 }
 
 #dropdown {
