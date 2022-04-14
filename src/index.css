@@ -17,7 +17,10 @@
   grid-template-columns: 1fr 1fr;
   min-height: 70vh;
 }
-
+button {
+  transform: skewY(-5deg);
+  transform: skewX(10deg);
+}
 #dropdown {
   width: 200px;
 }

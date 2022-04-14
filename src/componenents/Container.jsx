@@ -28,9 +28,6 @@ export default function Container() {
   }
 
   const handlePriorQuestion = async () => {
-    if (!dropdown) {
-      return alert("Please select an option from the dropdown menu!")
-    }
     if (questionIncrementer === 0 || questionIncrementer === 1) {
       return
     }
@@ -50,21 +47,23 @@ export default function Container() {
     if (!dropdown) {
       return alert("Please select an option from the dropdown menu!")
     }
-    if (questionIncrementer >= 20) {
+    if(isLoading) {
+      return
+    }
+    if (questionIncrementer >= 10) {
       setGameDone(true)
       return
     }
     setisLoading(true)
     // Uncomment below for testing and comment two lines above
     if (questions.length === questionIncrementer) {
-      const call = await openAICall(dropdown)
-      // await waitFunc(500)
-      // const timestamp = new Date().toTimeString().split(' ')[0]
-      // const call = timestamp
+      // const call = await openAICall(dropdown)
+      await waitFunc(2000)
+      const timestamp = new Date().toTimeString().split(' ')[0]
+      const call = timestamp
       setResponse(call);
       setQuestions(questions => [...questions, call]);
     } else {
-
       setResponse(questions[questionIncrementer]);
     }
     setQuestionIncrementer(questionIncrementer + 1);
