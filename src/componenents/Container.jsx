@@ -13,8 +13,6 @@ export default function Container() {
   const [questionIncrementer, setQuestionIncrementer] = useState(0);
   const [gameDone, setGameDone] = useState(false);
 
-  console.log(questionIncrementer)
-
   const waitFunc = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -57,10 +55,10 @@ export default function Container() {
     setisLoading(true)
     // Uncomment below for testing and comment two lines above
     if (questions.length === questionIncrementer) {
-      // const call = await openAICall(dropdown)
-      await waitFunc(2000)
-      const timestamp = new Date().toTimeString().split(' ')[0]
-      const call = timestamp
+      const call = await openAICall(dropdown)
+      // await waitFunc(1000)
+      // const timestamp = new Date().toTimeString().split(' ')[0]
+      // const call = timestamp
       setResponse(call);
       setQuestions(questions => [...questions, call]);
     } else {
