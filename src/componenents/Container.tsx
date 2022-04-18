@@ -17,7 +17,7 @@ export default function Container() {
 
   const [response, setResponse] = useState('');
   const [isLoading, setisLoading] = useState(false);
-  const [dropdown, setDropdown] = useState('')
+  const [dropdown, setDropdown] = useState('Rule')
   const [questions, setQuestions] = useState([]);
   const [questionIncrementer, setQuestionIncrementer] = useState(0);
   const [gameDone, setGameDone] = useState(false);
