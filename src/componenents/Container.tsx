@@ -4,6 +4,15 @@ import GameDone from './GameDone';
 import 'react-dropdown/style.css';
 import Header from './Header';
 import Dropdown from 'react-dropdown';
+
+enum Options {
+  Rule = "Rule",
+  Dilemma = "Dilemma",
+  Pointing = "Pointing Game Question",
+  Trivia = "Trivia Question"
+}
+
+
 export default function Container() {
 
   const [response, setResponse] = useState('');
@@ -36,7 +45,7 @@ export default function Container() {
   const restartGame = (res,gameDone, dropd, qIncrement, q) => {
     setResponse(res);
     setGameDone(gameDone);
-    setDropdown(dropd)
+    setDropdown('Rule')
     setQuestionIncrementer(qIncrement);
     setQuestions(q)
   }
@@ -48,17 +57,17 @@ export default function Container() {
     if(isLoading) {
       return
     }
-    if (questionIncrementer >= 10) {
+    if (questionIncrementer >= 2) {
       setGameDone(true)
       return
     }
     setisLoading(true)
     // Uncomment below for testing and comment two lines above
     if (questions.length === questionIncrementer) {
-      const call = await openAICall(dropdown)
-      // await waitFunc(1000)
-      // const timestamp = new Date().toTimeString().split(' ')[0]
-      // const call = timestamp
+      // const call = await openAICall(dropdown)
+      await waitFunc(200)
+      const timestamp = new Date().toTimeString().split(' ')[0]
+      const call = timestamp
       setResponse(call);
       setQuestions(questions => [...questions, call]);
     } else {
@@ -73,7 +82,7 @@ export default function Container() {
       {gameDone ? <GameDone inc={restartGame}/> :
       <>
         <Header />
-        <Dropdown onChange={handleDropdown} className='w-1/4 m-auto my-4' options={["Rule", "Dilemma", "Trivia Question", "Pointing Game Question"]} />
+          <Dropdown onChange={handleDropdown} className='w-1/4 m-auto my-4' placeholder={Options.Rule} options={[Options.Rule, Options.Dilemma, Options.Trivia, Options.Pointing]} />
         <div id="wrapper">
           {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
           <div onClick={handlePriorQuestion}>
