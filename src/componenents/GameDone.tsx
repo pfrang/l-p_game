@@ -8,7 +8,7 @@ export default function GameDone(props) {
     <>
       <h1>Game done</h1>
       <div id="wrapper-game-done" className='flex items-center justify-center'>
-        <Button onClick={handleClick} />
+        <Button onClick={handleClick} text='Play again?' />
       </div>
     </>
   )
