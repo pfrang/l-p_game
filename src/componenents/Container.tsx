@@ -49,7 +49,7 @@ export default function Container() {
     handleNextQuestion()
   }
 
-  const restartGame = (res, gameDone, dropd, qIncrement, q) => {
+  const restartGame = (res, gameDone, qIncrement, q) => {
     setResponse(res);
     setGameDone(gameDone);
     setDropdown('Rule')
@@ -64,7 +64,7 @@ export default function Container() {
     if (isLoading) {
       return
     }
-    if (questionIncrementer >= 2) {
+    if (questionIncrementer >= 15) {
       setGameDone(true)
       return
     }
