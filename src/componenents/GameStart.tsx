@@ -7,7 +7,6 @@ type Props = {
 };
 
 
-
 const GameStart:FC<Props> = (props) => {
   return (
     <div>
