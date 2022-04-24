@@ -5,6 +5,10 @@ import 'react-dropdown/style.css';
 import Header from './Header';
 import Dropdown from 'react-dropdown';
 import GameStart from './GameStart';
+import Button from '../Buttons/button';
+import Form from '../Forms/form';
+import { useDropdown, useDisplayForm } from '../context/dropdown';
+
 
 enum Options {
   Rule = "Rule",
@@ -18,23 +22,23 @@ export default function Container() {
 
   const [response, setResponse] = useState('');
   const [isLoading, setisLoading] = useState(false);
-  const [dropdown, setDropdown] = useState('Rule')
   const [questions, setQuestions] = useState([]);
   const [questionIncrementer, setQuestionIncrementer] = useState(0);
   const [gameDone, setGameDone] = useState(false);
   const [gameStart, setGameStart] = useState(true);
+  // const [displayForm, setDisplsyForm] = useState(false);
 
-  const waitFunc = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  const { dropdownChoice, setDropDownChoice } = useDropdown();
+  const { formState, showForm, hideForm } = useDisplayForm();
 
   const setLocalStorage = () => {
     window.sessionStorage.setItem('questions', questions);
   }
 
-  const handleDropdown = (e) => {
-    setDropdown(e.value);
-  }
+
+  // useEffect(() => {
+  //   setDilemma()
+  // },[dropdown])
 
   const handlePriorQuestion = async () => {
     if (questionIncrementer === 0 || questionIncrementer === 1) {
@@ -52,13 +56,13 @@ export default function Container() {
   const restartGame = (res, gameDone, qIncrement, q) => {
     setResponse(res);
     setGameDone(gameDone);
-    setDropdown('Rule')
+    setDropDownChoice('Rule')
     setQuestionIncrementer(qIncrement);
     setQuestions(q)
   }
 
   const handleNextQuestion = async () => {
-    if (!dropdown) {
+    if (!dropdownChoice) {
       return alert("Please select an option from the dropdown menu!")
     }
     if (isLoading) {
@@ -72,7 +76,7 @@ export default function Container() {
     setisLoading(true)
     // Uncomment below for testing and comment two lines above
     if (questions.length === questionIncrementer) {
-      const call = await openAICall(dropdown)
+      const call = await openAICall(dropdownChoice)
       // await waitFunc(200)
       // const timestamp = new Date().toTimeString().split(' ')[0]
       // const call = timestamp
@@ -90,7 +94,9 @@ export default function Container() {
       {gameDone ? <GameDone inc={restartGame} /> :
         <>
           <Header />
-          <Dropdown onChange={handleDropdown} className='w-1/4 m-auto my-4' placeholder={Options.Rule} options={[Options.Rule, Options.Dilemma, Options.Trivia, Options.Pointing]} />
+          <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/4 m-auto my-4' placeholder={Options.Rule} options={[Options.Rule, Options.Dilemma, Options.Trivia, Options.Pointing]} />
+          {formState ? <Form/> : <Button onClick={() => showForm()} text='Generate a rule!'></Button> }
+
           <>
             {gameStart ? <GameStart onClick={handleNextQuestion} /> :
               <div id="wrapper">
