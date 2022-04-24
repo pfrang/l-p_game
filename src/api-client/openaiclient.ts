@@ -9,7 +9,6 @@ export const openAICall = async (input:string) => {
   const configuration = new Configuration({
     apiKey: apiKey,
   });
-  console.log(input)
   let prompt;
   switch (input) {
     case 'Regel':

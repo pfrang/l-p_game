@@ -9,6 +9,75 @@
   --anim: rotate(90deg)
 }
 
+#app {
+  margin: 0 10px;
+  width: 100%
+}
+
+h1 {
+  font-size: 36px;
+}
+
+p {
+  font-family: 'Bowlby One', cursive;
+}
+
+h2 {
+  font-size: 28px;
+  color: rgb(103, 177, 47);
+  font-family: 'Bowlby One', cursive;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+}
+
+button {
+  font-family: 'Bowlby One', cursive;
+  padding: 24px 64px;
+}
+
+
+@media (max-width: 950px) {
+  #app {
+    width: 800px;
+  }
+  h1 {
+    font-size: 28px
+  }
+
+  a {
+    width: 100px;
+  }
+
+  button {
+    width: 300px;
+    padding: 32px 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  #app {
+    width: 600px;
+  }
+
+  h1 {
+    font-size: 24px
+  }
+
+  a {
+    width: 75px;
+  }
+
+  button {
+    width: 50%;
+    padding: 24px 24px;
+  }
+}
+
+
+
 * {
   font-family: 'Bowlby One', cursive;
 }
@@ -58,28 +127,8 @@ button {
   }
 }
 
-h1 {
-  font-size: 36px;
-}
 
-p {
-  font-family: 'Bowlby One', cursive;
-}
 
-h2 {
-  font-size: 28px;
-  color: rgb(103, 177, 47);
-  font-family: 'Bowlby One', cursive;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  bottom: 50%;
-}
-
-button {
-  font-family: 'Bowlby One', cursive;
-}
 
 body {
   margin: 0;
