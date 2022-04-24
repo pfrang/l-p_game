@@ -95,8 +95,7 @@ export default function Container() {
         <>
           <Header />
           <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/4 m-auto my-4' placeholder={Options.Rule} options={[Options.Rule, Options.Dilemma, Options.Trivia, Options.Pointing]} />
-          {formState ? <Form/> : <Button onClick={() => showForm()} text='Generate a rule!'></Button> }
-
+          {formState ? <Form/> : <Button onClick={() => showForm()} text='Create a rule!'></Button> }
           <>
             {gameStart ? <GameStart onClick={handleNextQuestion} /> :
               <div id="wrapper">

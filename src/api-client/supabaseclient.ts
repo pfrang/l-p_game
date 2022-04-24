@@ -4,7 +4,7 @@ export const dbCall = async (input) => {
   const { type, content } = input
   const supabaseUrl = "https://kafiowruwxythkhdxass.supabase.co"
   // const supabaseKey = process.env.SUPABASE_KEY
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImthZmlvd3J1d3h5dGhraGR4YXNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTA3NDI0ODIsImV4cCI6MTk2NjMxODQ4Mn0.QIePQnN25Tfr5Do0-Bn6-xX8Ey95VHiYukRfGBZgmGg'
+  const supabaseKey = process.env.REACT_APP_SUPABASE_API_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
 
 // let { data: questions, error } = await supabase
