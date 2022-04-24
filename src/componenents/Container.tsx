@@ -8,14 +8,7 @@ import GameStart from './GameStart';
 import Button from '../Buttons/button';
 import Form from '../Forms/form';
 import { useDropdown, useDisplayForm } from '../context/dropdown';
-
-
-enum Options {
-  Rule = "Rule",
-  Dilemma = "Dilemma",
-  Pointing = "Pointing Game Question",
-  Trivia = "Trivia Question"
-}
+import { DropDownOptions } from '../interface/Typing';
 
 
 export default function Container() {
@@ -29,7 +22,8 @@ export default function Container() {
   // const [displayForm, setDisplsyForm] = useState(false);
 
   const { dropdownChoice, setDropDownChoice } = useDropdown();
-  const { formState, showForm, hideForm } = useDisplayForm();
+  const { showFormState, showForm, hideForm } = useDisplayForm();
+  console.log(dropdownChoice)
 
   const setLocalStorage = () => {
     window.sessionStorage.setItem('questions', questions);
@@ -53,12 +47,12 @@ export default function Container() {
     handleNextQuestion()
   }
 
-  const restartGame = (res, gameDone, qIncrement, q) => {
+  const restartGame = (res, gameDone, qIncrement, q, w) => {
     setResponse(res);
     setGameDone(gameDone);
-    setDropDownChoice('Rule')
     setQuestionIncrementer(qIncrement);
     setQuestions(q)
+    setGameStart(w)
   }
 
   const handleNextQuestion = async () => {
@@ -68,7 +62,7 @@ export default function Container() {
     if (isLoading) {
       return
     }
-    if (questionIncrementer >= 15) {
+    if (questionIncrementer >= 1) {
       setGameDone(true)
       return
     }
@@ -94,19 +88,21 @@ export default function Container() {
       {gameDone ? <GameDone inc={restartGame} /> :
         <>
           <Header />
-          <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/4 m-auto my-4' placeholder={Options.Rule} options={[Options.Rule, Options.Dilemma, Options.Trivia, Options.Pointing]} />
-          {formState ? <Form/> : <Button onClick={() => showForm()} text='Create a rule!'></Button> }
-          <>
-            {gameStart ? <GameStart onClick={handleNextQuestion} /> :
-              <div id="wrapper">
-                {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
-                <div onClick={handlePriorQuestion}>
+          <div id="main" className='py-12'>
+            <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/4 m-auto my-4' placeholder={DropDownOptions.Rule} options={[DropDownOptions.Rule, DropDownOptions.Dilemma, DropDownOptions.Trivia, DropDownOptions.Pointing]} />
+            {!gameStart ? '' : (showFormState ? <Form /> : <Button onClick={() => showForm()} text='Bidra ved å sende inn ditt eget spørsmål!'></Button>)}
+            <>
+              {showFormState ? '' : gameStart ? <GameStart onClick={handleNextQuestion} /> :
+                <div id="wrapper">
+                  {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
+                  <div onClick={handlePriorQuestion}>
+                  </div>
+                  <div onClick={handleNextQuestion}>
+                  </div >
                 </div>
-                <div onClick={handleNextQuestion}>
-                </div >
-              </div>
-            }
-          </>
+              }
+            </>
+          </div>
         </>
       }
     </>

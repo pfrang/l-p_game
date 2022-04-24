@@ -11,7 +11,7 @@ const GameStart:FC<Props> = (props) => {
   return (
     <div>
       <div id="wrapper-game-done" className='flex items-center justify-center'>
-        <Button onClick={props.onClick} text='Start game'/>
+        <Button onClick={props.onClick} text='Start spill' style="text-lg"/>
       </div>
     </div>
   );

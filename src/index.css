@@ -9,6 +9,9 @@
   --anim: rotate(90deg)
 }
 
+* {
+  font-family: 'Bowlby One', cursive;
+}
 #wrapper {
   /* padding: 20px 50px; */
   position: relative;
@@ -27,7 +30,7 @@ button {
 
 #wrapper-game-done {
   position: relative;
-  min-height: 80vh;
+  min-height: 60vh;
 }
 
 #output {
@@ -57,6 +60,10 @@ button {
 
 h1 {
   font-size: 36px;
+}
+
+p {
+  font-family: 'Bowlby One', cursive;
 }
 
 h2 {

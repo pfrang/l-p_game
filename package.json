@@ -22,6 +22,7 @@
     "react-native-dropdown-menu": "^2.0.0",
     "react-native-dropdown-picker": "^5.4.0",
     "react-native-material-dropdown": "^0.11.1",
+    "react-native-web": "^0.17.7",
     "react-scripts": "5.0.0",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4",

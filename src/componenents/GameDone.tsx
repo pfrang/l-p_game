@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Button from '../Buttons/button'
+import { useDropdown } from '../context/dropdown';
 export default function GameDone(props) {
-  const handleClick = () => {
-    props.inc('',false, '',0, [])
+
+  const { dropdownChoice, setDropDownChoice } = useDropdown();
+  const set = (e) => {
+    setDropDownChoice(e)
   }
+
+  const handleClick = () => {
+    props.inc('',false,0, [], true)
+    set('Regel')
+  }
+
   return (
     <>
       <h1>Game done</h1>
