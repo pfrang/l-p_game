@@ -62,7 +62,7 @@ export default function Container() {
     if (isLoading) {
       return
     }
-    if (questionIncrementer >= 1) {
+    if (questionIncrementer >= 15) {
       setGameDone(true)
       return
     }
