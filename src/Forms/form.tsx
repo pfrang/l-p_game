@@ -21,8 +21,8 @@ function Form(props) {
 
   return (
     <form onSubmit={handleRule} >
-      <div className='m-auto w-1/5'>
-        <p className='bg-purple-500 border-b-4 border-r-4 border-purple-700 text-black text-center'>Send inn <br></br>{dropdownChoice}</p>
+      <div id="form-div" className='m-auto w-1/5'>
+        <p className='bg-white border-b-4 border-r-4 text-black text-center mb-2'>Send inn <br></br>{dropdownChoice}</p>
       </div>
       <textarea autoFocus className='p-2 h-28 w-72' rows="4" type="text" onChange={(e) => setContent(e.target.value)} maxLength="50" placeholder='Endre på nedtrekksmenyen over for å sende inn et spm til den respektive kategorien valgt' />
       <div>
