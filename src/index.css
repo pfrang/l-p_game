@@ -76,7 +76,29 @@ button {
   }
 }
 
+@media (max-width: 500px) {
+  #app {
+    width: 400px;
+  }
 
+  h1 {
+    font-size: 18px;
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    left: 15%;
+  }
+
+  a {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  button {
+    width: 70%;
+    padding: 12px 12px;
+  }
+}
 
 * {
   font-family: 'Bowlby One', cursive;
