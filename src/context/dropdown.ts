@@ -9,3 +9,8 @@ export const useDisplayForm = create((set) => ({
   showForm: () => set(() => ({showFormState: true})),
   hideForm: () => set(() => ({showFormState: false})),
 }))
+export const useDisplay2ndGame = create((set) => ({
+  showAltGame: false,
+  showGame: () => set(() => ({showAltGame: true})),
+  hideGame: () => set(() => ({ showAltGame: false})),
+}))

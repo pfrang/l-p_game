@@ -10,7 +10,6 @@
 }
 
 #app {
-  margin: 0 10px;
   width: 100%
 }
 
@@ -38,13 +37,56 @@ button {
   padding: 24px 64px;
 }
 
+@media only screen and (max-width: 1300px) {
+  #reset {
+    width: 250px;
+    padding: 16px 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  #game2btn {
+    width: 250px;
+    padding: 16px 16px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #reset {
+    width: 200px;
+    padding: 14px 14px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  #game2btn {
+    width: 200px;
+    padding: 14px 14px;
+    font-size: 14px;
+  }
+}
+
 
 @media only screen and (max-width: 950px) {
-  #app {
-    width: 800px;
+
+  #reset {
+    width: 135px;
+    padding: 10px 10px;
+    font-size: 10px;
+  }
+
+  #game2btn {
+    width: 135px;
+    padding: 10px 10px;
+    font-size: 10px;
   }
   h1 {
-    font-size: 28px
+    font-size: 24px
   }
 
   a {
@@ -59,12 +101,22 @@ button {
 }
 
 @media only screen and (max-width: 700px) {
-  #app {
-    width: 600px;
+
+  #reset {
+    width: 90px;
+    padding: 10px 10px;
+    font-size: 10px;
   }
 
+  #game2btn {
+    width: 90px;
+    padding: 10px 10px;
+    font-size: 10px;
+  }
+
+
   h1 {
-    font-size: 24px
+    font-size: 22px
   }
 
   a {
@@ -78,16 +130,19 @@ button {
 }
 
 @media only screen and (max-width: 500px) {
-  #app {
-    width: 400px;
+  #reset {
+    width: 70px;
+    padding: 6px 6px;
+    font-size: 6px;
   }
 
+  #game2btn {
+    width: 70px;
+    padding: 6px 6px;
+    font-size: 6px;
+  }
   h1 {
-    font-size: 18px;
-    text-align: right;
-    position: absolute;
-    top: 10px;
-    left: 15%;
+    font-size: 14px;
   }
 
   a {
@@ -129,6 +184,13 @@ button {
   /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   animation: mymove 2s ease-in;
 }
+
+#reset {
+    transform: skewY(5deg);
+    transform: skewX(-10deg);
+}
+
+
 
 
 @keyframes mymove {

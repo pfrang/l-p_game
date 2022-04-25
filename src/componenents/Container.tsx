@@ -9,6 +9,7 @@ import Button from '../Buttons/button';
 import Form from '../Forms/form';
 import { useDropdown, useDisplayForm } from '../context/dropdown';
 import { DropDownOptions } from '../interface/Typing';
+import { useDisplay2ndGame } from '../context/dropdown';
 
 
 export default function Container() {
@@ -23,7 +24,7 @@ export default function Container() {
 
   const { dropdownChoice, setDropDownChoice } = useDropdown();
   const { showFormState, showForm, hideForm } = useDisplayForm();
-  console.log(dropdownChoice)
+  const { showAltGame, showGame, hideGame } = useDisplay2ndGame();
 
   const setLocalStorage = () => {
     window.sessionStorage.setItem('questions', questions);

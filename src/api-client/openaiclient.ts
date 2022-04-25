@@ -12,7 +12,6 @@ export const openAICall = async (input:string) => {
   let prompt;
   switch (input) {
     case 'Regel':
-      console.log(1)
       prompt = `${PromptOptions.Rule}\nRule:`
       break;
     case 'Pekelek':
@@ -22,7 +21,6 @@ export const openAICall = async (input:string) => {
       prompt = `${PromptOptions.Dilemma}\nDilemma:`
       break;
     case 'Trivia Spørsmål':
-      console.log(2)
       prompt = `${PromptOptions.Trivia}\nTrivia:`
       break;
   }
