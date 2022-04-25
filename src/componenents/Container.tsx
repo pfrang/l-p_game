@@ -89,7 +89,7 @@ export default function Container() {
         <>
           <Header />
           <div id="main" className='py-12'>
-            <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/4 m-auto my-4' placeholder={DropDownOptions.Rule} options={[DropDownOptions.Rule, DropDownOptions.Dilemma, DropDownOptions.Trivia, DropDownOptions.Pointing]} />
+            <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/3 m-auto my-3' placeholder={DropDownOptions.Rule} options={[DropDownOptions.Rule, DropDownOptions.Dilemma, DropDownOptions.Trivia, DropDownOptions.Pointing]} />
             {!gameStart ? '' : (showFormState ? <Form /> : <Button onClick={() => showForm()} text='Bidra ved å sende inn ditt eget spørsmål!'></Button>)}
             <>
               {showFormState ? '' : gameStart ? <GameStart onClick={handleNextQuestion} /> :
