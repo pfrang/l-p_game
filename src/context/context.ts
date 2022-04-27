@@ -9,8 +9,13 @@ export const useDisplayForm = create((set) => ({
   showForm: () => set(() => ({showFormState: true})),
   hideForm: () => set(() => ({showFormState: false})),
 }))
-export const useDisplay2ndGame = create((set) => ({
-  showAltGame: false,
-  showGame: () => set(() => ({showAltGame: true})),
-  hideGame: () => set(() => ({ showAltGame: false})),
+export const useDisplayGame = create((set) => ({
+  gameStart: false,
+  setGame: () => set(() => ({gameStart: true})),
+  endGame: () => set(() => ({ gameStart: false})),
+}))
+export const useDisplayMysteriousGame = create((set) => ({
+  gameMystStart: false,
+  setMystGame: () => set(() => ({ gameMystStart: true})),
+  endMystGame: () => set(() => ({ gameMystStart: false})),
 }))

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import Button from '../Buttons/button'
-import { useDropdown } from '../context/dropdown';
+import { useDropdown } from '../context/context';
 export default function GameDone(props) {
 
   const { dropdownChoice, setDropDownChoice } = useDropdown();
@@ -9,7 +9,7 @@ export default function GameDone(props) {
   }
 
   const handleClick = () => {
-    props.inc('',false,0, [], true)
+    props.inc('',false,0, [])
     set('Regel')
   }
 
