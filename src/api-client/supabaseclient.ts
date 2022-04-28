@@ -7,7 +7,7 @@ export const dbCall = async (input?) => {
   // const supabaseKey = process.env.SUPABASE_KEY
   const supabaseKey = process.env.REACT_APP_SUPABASE_API_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
-  switch (input) {
+  switch (input.type) {
     case 'Regel':
       input.type = 'Rule'
       break;
