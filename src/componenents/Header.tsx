@@ -8,11 +8,11 @@ function Header(props) {
 
   const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
   const { gameStart, setGame, endGame } = useDisplayGame();
-  const func = props.startGame
+  const initGame = props.startGame
 
   useEffect(() => {
     if(gameMystStart) {
-      func();
+      initGame();
     }
   },[gameMystStart])
 
