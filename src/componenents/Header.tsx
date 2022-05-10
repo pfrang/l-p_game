@@ -23,7 +23,7 @@ function Header(props) {
     <header className=''>
 
         {gameStart ?
-        <div className='relative flex justify-between my-2 mb-[10rem]'>
+        <div className='flex justify-between my-2 mb-[10rem]'>
          <h1 id="header" className='inline text-5xl absolute left-3'>Klar til å få det på? 🍻</h1>
           <a id="reset-btn" className='absolute top-0 right-0 m-0' href="/">
             <svg id ="svg-arrow" width="50" height="20" viewBox="0 0 60 43" fill="none" xmlns="http://www.w3.org/2000/svg">
