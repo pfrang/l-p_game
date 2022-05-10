@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '../Buttons/button';
 import { FC } from 'react';
-import { useDropdown, useDisplayForm } from '../context/context';
+import { useDropdown, useDisplayForm, useDisplayGame, useDisplayMysteriousGame } from '../context/context';
 import Form from './Forms/form';
 
 type Props = {
@@ -12,10 +12,19 @@ type Props = {
 const GameStart: FC<Props> = (props) => {
 
   const { showFormState, showForm, hideForm } = useDisplayForm();
+  const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
+  const { gameStart, setGame, endGame } = useDisplayGame();
+
+  useEffect(() => {
+    if (gameMystStart) {
+      props.onClick();
+    }
+  }, [gameMystStart])
 
   return (
+    <div>
 
-      <div className='mx-12 my-20 flex justify-center'>
+      <div className='mx-12 mt-20 flex justify-center'>
         <Button onClick={props.onClick}>
           <svg class="h-30 w-28" viewBox="0 0 177 96" fill="none" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="88.0531" cy="47.9303" rx="83.7306" ry="36.4046" transform="rotate(-8.16723 88.0531 47.9303)" fill="black" />
@@ -24,17 +33,28 @@ const GameStart: FC<Props> = (props) => {
           </svg>
         </Button>
 
-      {
-        (showFormState ? <Form /> : <Button onClick={() => showForm()} >
+        {
+          (showFormState ? <Form /> : <Button onClick={() => showForm()} >
+            <svg class="h-30 w-28" viewBox="0 0 225 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path id="p1" d="M35.6262 2.4263L140.306 10.2066C147.412 10.7347 154.555 9.96467 161.385 7.93407L179.734 2.47908C195.191 -2.11612 211.753 4.74198 219.437 18.9188C230.312 38.9832 218.793 63.8597 196.458 68.5473L168.694 74.3743C163.569 75.45 158.317 75.7915 153.095 75.3886L30.8146 65.9533C13.4606 64.6143 0.394373 49.5937 1.47172 32.2215C2.5701 14.5102 17.9297 1.11102 35.6262 2.4263Z" stroke="black" />
+                <text href="#p1" x="50%" y="50%" id="textp1" fill="black" textAnchor='middle' alignmentBaseline='middle'>Send inn bidrag</text>
+              </g>
+            </svg>
+          </Button>)
+        }
+      </div>
+      <div>
+        <Button onClick={() => setMystGame()}>
           <svg class="h-30 w-28" viewBox="0 0 225 77" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g>
               <path id="p1" d="M35.6262 2.4263L140.306 10.2066C147.412 10.7347 154.555 9.96467 161.385 7.93407L179.734 2.47908C195.191 -2.11612 211.753 4.74198 219.437 18.9188C230.312 38.9832 218.793 63.8597 196.458 68.5473L168.694 74.3743C163.569 75.45 158.317 75.7915 153.095 75.3886L30.8146 65.9533C13.4606 64.6143 0.394373 49.5937 1.47172 32.2215C2.5701 14.5102 17.9297 1.11102 35.6262 2.4263Z" stroke="black" />
-              <text href="#p1" x="50%" y="50%" id="textp1" fill="black" textAnchor='middle' alignmentBaseline='middle'>Send inn bidrag</text>
+              <text href="#p1" x="50%" y="50%" id="textp1" fill="black" textAnchor='middle' alignmentBaseline='middle'>Spill mystisk spill</text>
             </g>
           </svg>
-        </Button>)
-      }
+        </Button>
       </div>
+    </div>
   );
 }
 
