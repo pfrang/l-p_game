@@ -6,11 +6,12 @@ import Header from './Header';
 import Dropdown from 'react-dropdown';
 import GameStart from './GameStart';
 import Button from '../Buttons/button';
-import Form from '../Forms/form';
+import Form from './Forms/form';
 import { useDropdown, useDisplayForm } from '../context/context';
 import { DropDownOptions } from '../interface/Typing';
 import { useDisplayGame, useDisplayMysteriousGame } from '../context/context';
 import { dbCall } from '../api-client/supabaseclient';
+import DropdownMenu from './DropdownMenu';
 
 
 export default function Container() {
@@ -91,12 +92,11 @@ export default function Container() {
     <>
       {gameDone ? <GameDone inc={restartGame} /> :
         <>
-          <Header startGame={handleNextQuestion}/>
-          <div id="main" className='py-12'>
-            <Dropdown onChange={(e) => setDropDownChoice(e.value)} className='w-1/3 m-auto my-3' placeholder={DropDownOptions.Rule} options={[DropDownOptions.Rule, DropDownOptions.Dilemma, DropDownOptions.Trivia, DropDownOptions.Pointing]} />
-            {gameStart ? '' : (showFormState ? <Form /> : <Button onClick={() => showForm()} text='Bidra ved å sende inn ditt eget spørsmål!'></Button>)}
-            <>
-              {showFormState ? '' : !gameStart ? <GameStart onClick={handleNextQuestion} /> :
+          <Header />
+          <div id="main" className=''>
+            <div className='my-20'>
+            <DropdownMenu />
+              {showFormState ? <Form/> : !gameStart ? <GameStart onClick={handleNextQuestion} /> :
                 <div id="wrapper">
                   {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
                   <div onClick={handlePriorQuestion}>
@@ -105,7 +105,7 @@ export default function Container() {
                   </div >
                 </div>
               }
-            </>
+              </div>
           </div>
         </>
       }

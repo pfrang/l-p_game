@@ -17,7 +17,7 @@ export const dbCall = async (input?) => {
       input.type = 'Dilemma'
       break;
     case 'Trivia Spørsmål':
-      input.type = 'DropDownOptions.Rule'
+      input.type = 'Trivia'
       break;
   }
   // let { data: questions, error } = await supabase

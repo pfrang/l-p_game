@@ -4,6 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Comforter&display=swap');
 
+@font-face {
+  font-family: 'Outward';
+  src: url('./webfonts/outward/outward-block-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Suisse';
+  src: url('./webfonts/Suisse/SuisseIntl-Light-WebS.woff') format('woff');
+}
+
+
 
 :root {
   --anim: rotate(90deg)
@@ -13,28 +24,24 @@
   width: 100%
 }
 
-h1 {
-  font-size: 36px;
+text {
+  color: blueviolet;
 }
 
-p {
-  font-family: 'Bowlby One', cursive;
+#start-text {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
+
 
 h2 {
   font-size: 28px;
   color: rgb(103, 177, 47);
-  font-family: 'Bowlby One', cursive;
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
   bottom: 50%;
-}
-
-button {
-  font-family: 'Bowlby One', cursive;
-  padding: 24px 64px;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -43,9 +50,6 @@ button {
     padding: 16px 16px;
   }
 
-  h1 {
-    font-size: 32px;
-  }
 
   #game2btn {
     width: 250px;
@@ -60,9 +64,6 @@ button {
     font-size: 14px;
   }
 
-  h1 {
-    font-size: 30px;
-  }
 
   #game2btn {
     width: 200px;
@@ -85,19 +86,12 @@ button {
     padding: 10px 10px;
     font-size: 10px;
   }
-  h1 {
-    font-size: 24px
-  }
 
   a {
     width: 100px;
     margin-right: 10px;
   }
 
-  button {
-    width: 300px;
-    padding: 32px 32px;
-  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -117,18 +111,11 @@ button {
     width: 33%;
   }
 
-  h1 {
-    font-size: 22px
-  }
 
   a {
     width: 75px;
   }
 
-  button {
-    width: 50%;
-    padding: 24px 24px;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -143,24 +130,15 @@ button {
     padding: 6px 6px;
     font-size: 8px;
   }
-  h1 {
-    font-size: 14px;
-  }
+
 
   a {
     width: 50px;
     font-size: 10px;
   }
 
-  button {
-    width: 70%;
-    padding: 12px 12px;
-  }
 }
 
-* {
-  font-family: 'Bowlby One', cursive;
-}
 #wrapper {
   /* padding: 20px 50px; */
   position: relative;
@@ -168,10 +146,6 @@ button {
   margin: 0px 50px;
   grid-template-columns: 1fr 1fr;
   min-height: 70vh;
-}
-button {
-  transform: skewY(-5deg);
-  transform: skewX(10deg);
 }
 #dropdown {
   width: 200px;
@@ -192,6 +166,24 @@ button {
     transform: skewX(-10deg);
 }
 
+#header {
+
+/* Frame 8 */
+
+  /* Auto layout */  /* Klar til å få det på? */
+
+  font-family: 'Outward';
+  font-style: normal;
+  font-weight: 400;
+
+  color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+#reset-btn:hover #reset-arrow {
+  fill-opacity: 0.8;
+}
 
 
 
@@ -219,15 +211,13 @@ button {
 
 body {
   margin: 0;
-  background-color: purple;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-size: 100%;
+  background-color: #ADFF00;
+  font-family: 'Suisse';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Suisse';
 }
