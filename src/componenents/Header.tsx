@@ -20,7 +20,7 @@ function Header(props) {
     setMystGame();
   }
   return (
-    <header className='my-2'>
+    <header className=''>
 
         {gameStart ?
         <div className='relative flex justify-between my-2'>
