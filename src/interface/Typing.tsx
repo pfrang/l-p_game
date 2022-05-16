@@ -2,7 +2,8 @@ export const enum DropDownOptions {
   Rule = "Regel",
   Dilemma = "Dilemma",
   Pointing = "Pekelek",
-  Trivia = "Trivia Spørsmål"
+  Trivia = "Trivia Spørsmål",
+  Mix = "Mix"
 }
 
 

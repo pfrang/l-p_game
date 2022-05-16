@@ -21,7 +21,6 @@ export const dbCall = async (input?) => {
       input.type = 'Trivia'
       break;
   }
-  console.log(input.type)
   // let { data: questions, error } = await supabase
   //     .from('questions')
   //     .select('*')
@@ -46,14 +45,19 @@ export const dbCall = async (input?) => {
 
   const readData = async () => {
     const { type } = input
-    console.log(type)
-    console.log(typeof type)
     try {
-      const { data, error } = await supabase
-        .from('questions')
-        .select('content')
-        .eq('type',type)
-      return data
+      if (type === "Mix") {
+        const { data, error } = await supabase
+          .from('questions')
+          .select('content')
+        return data
+      } else {
+        const { data, error } = await supabase
+          .from('questions')
+          .select('content')
+          .eq('type', type)
+        return data
+      }
     } catch (e) {
       console.error(e)
     }
@@ -63,6 +67,7 @@ export const dbCall = async (input?) => {
     insertData()
   } else {
     const response = await readData();
+    console.log(response)
     const randomElement = response[Math.floor(Math.random() * response.length)].content
     return randomElement
 
