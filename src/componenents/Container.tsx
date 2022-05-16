@@ -29,10 +29,6 @@ export default function Container() {
   const { gameStart, setGame, endGame } = useDisplayGame();
   const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
 
-  const setLocalStorage = () => {
-    window.sessionStorage.setItem('questions', questions);
-  }
-
 
   // useEffect(() => {
   //   setDilemma()
@@ -72,7 +68,7 @@ export default function Container() {
     if (questions.length === questionIncrementer) {
       let call;
       if (gameMystStart) {
-        call = await dbCall()
+        call = await dbCall({type:dropdownChoice})
       } else {
         call = await openAICall(dropdownChoice)
       }

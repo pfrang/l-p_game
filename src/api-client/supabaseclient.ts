@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { DropDownOptions } from '../interface/Typing'
 
+
 export const dbCall = async (input?) => {
   const supabaseUrl = "https://kafiowruwxythkhdxass.supabase.co"
   // const supabaseKey = process.env.SUPABASE_KEY
@@ -20,6 +21,7 @@ export const dbCall = async (input?) => {
       input.type = 'Trivia'
       break;
   }
+  console.log(input.type)
   // let { data: questions, error } = await supabase
   //     .from('questions')
   //     .select('*')
@@ -43,18 +45,21 @@ export const dbCall = async (input?) => {
   }
 
   const readData = async () => {
+    const { type } = input
+    console.log(type)
+    console.log(typeof type)
     try {
       const { data, error } = await supabase
         .from('questions')
         .select('content')
-        .eq('verified', true)
+        .eq('type',type)
       return data
     } catch (e) {
       console.error(e)
     }
   }
 
-  if (input) {
+  if (input.content) {
     insertData()
   } else {
     const response = await readData();
