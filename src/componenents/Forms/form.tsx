@@ -24,7 +24,7 @@ function Form(props) {
       <div id="form-div" className='m-auto w-1/5 my-20'>
         <p className='bg-white border-b-4 border-r-4 text-black text-center mb-2'>Sender nå inn <br></br>{dropdownChoice}</p>
       </div>
-      <textarea autoFocus className='p-2 h-34 w-72' rows="4" type="text" onChange={(e) => setContent(e.target.value)} maxLength="50" placeholder='Endre på nedtrekksmenyen over for å sende inn et spm til den respektive kategorien valgt' />
+      <textarea autoFocus className='p-2 h-34 w-72' rows="4" type="text" onChange={(e) => setContent(e.target.value)} maxLength="500" placeholder='Endre på nedtrekksmenyen over for å sende inn et spm til den respektive kategorien valgt' />
       <div>
         <Button onClick={(e) => handleRule(e)}>
           <svg className="h-30 w-28" viewBox="0 0 177 96" fill="none" xmlns="http://www.w3.org/2000/svg">
