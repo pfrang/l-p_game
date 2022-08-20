@@ -4,9 +4,10 @@ import { DropDownOptions } from '../interface/Typing'
 
 export const dbCall = async (input?) => {
   const supabaseUrl = "https://kafiowruwxythkhdxass.supabase.co"
+
   // const supabaseKey = process.env.SUPABASE_KEY
   const supabaseKey = process.env.REACT_APP_SUPABASE_API_KEY
-  const supabase = createClient(supabaseUrl, supabaseKey)
+  const supabase = createClient(supabaseUrl, supabaseKey as string)
   switch (input?.type) {
     case 'Regel':
       input.type = 'Rule'
@@ -21,27 +22,35 @@ export const dbCall = async (input?) => {
       input.type = 'Trivia'
       break;
   }
-  // let { data: questions, error } = await supabase
-  //     .from('questions')
-  //     .select('*')
-  // READ SPECIFIC COLUMNS
-  // let { data: questions, error } = await supabase
-  //   .from('questions')
-  //   .select('*')
 
   const insertData = async () => {
     const { type, content } = input
-    try {
-      const { data, error } = await supabase
-        .from('questions')
-        .insert([
-          { type: type, content: content },
-        ])
-      console.log(data[0])
-    } catch (e) {
-      console.error(e)
+    if (content === 'DELETE DB') {
+      console.log('DELETING DB');
+
+      try {
+        const { data, error } = await supabase
+          .from('questions')
+          .delete()
+          .match({ deletecol: 1 });
+          return data
+      } catch (e) {
+        console.error(e)
+      }
+    } else {
+      try {
+        const { data, error } = await supabase
+          .from('questions')
+          .insert([
+            { type: type, content: content },
+          ])
+          return data
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
+
 
   const readData = async () => {
     const { type } = input
@@ -64,7 +73,9 @@ export const dbCall = async (input?) => {
   }
 
   if (input.content) {
-    insertData()
+    const res = await insertData()
+    console.log(res);
+
   } else {
     const response = await readData();
     console.log(response)
