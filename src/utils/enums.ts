@@ -1,9 +1,15 @@
-export const enum DropDownOptions {
+export enum DropDownOptions {
   Rule = "Regel",
   Dilemma = "Dilemma",
   Pointing = "Pekelek",
   Trivia = "Trivia Spørsmål",
   Mix = "Mix"
+}
+
+export enum DropDownGameModes {
+  Normal = "Spør AI om en tilfeldig Regel, Dilemma, Pekelek eller Trivia Spørsmål",
+  SendIn = "Send inn et bidrag og spill ut ifra de som er sendt inn!",
+  OverUnderVurdert = "Er det AI spytter ut over,under eller vurdert?"
 }
 
 

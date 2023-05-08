@@ -1,4 +1,4 @@
-import { PromptOptions } from "../interface/Typing";
+import { PromptOptions } from "../utils/enums";
 
 const { Configuration, OpenAIApi } = require("openai");
 

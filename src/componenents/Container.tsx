@@ -3,15 +3,13 @@ import { openAICall } from '../api-client/openaiclient'
 import GameDone from './GameDone';
 import 'react-dropdown/style.css';
 import Header from './Header';
-import Dropdown from 'react-dropdown';
 import GameStart from './GameStart';
-import Button from '../Buttons/button';
 import Form from './Forms/form';
-import { useDropdown, useDisplayForm } from '../context/context';
-import { DropDownOptions } from '../interface/Typing';
+import { useDropdown, useDisplayForm, useSetGameMode } from '../context/context';
 import { useDisplayGame, useDisplayMysteriousGame } from '../context/context';
 import { dbCall } from '../api-client/supabaseclient';
 import DropdownMenu from './DropdownMenu';
+import { SupaBaseEnumError, SupaBaseError } from '../Errors/SupabaseError';
 
 
 export default function Container() {
@@ -23,12 +21,13 @@ export default function Container() {
   const [gameDone, setGameDone] = useState(false);
   // const [gameStart, setGameStart] = useState(true);
   // const [displayForm, setDisplsyForm] = useState(false);
+  const [ bug, setBug ] = useState("");
 
   const { dropdownChoice, setDropDownChoice } = useDropdown();
   const { showFormState, showForm, hideForm } = useDisplayForm();
   const { gameStart, setGame, endGame } = useDisplayGame();
   const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
-
+  const { gameMode, setGameMode } = useSetGameMode()
 
   // useEffect(() => {
   //   setDilemma()
@@ -67,10 +66,15 @@ export default function Container() {
     // Uncomment below for testing and comment two lines above
     if (questions.length === questionIncrementer) {
       let call;
-      if (gameMystStart) {
-        call = await dbCall({type:dropdownChoice})
-      } else {
-        call = await openAICall(dropdownChoice)
+      try {
+
+        if (gameMystStart) {
+          call = await dbCall({type:dropdownChoice})
+        } else {
+          call = await openAICall(dropdownChoice)
+        }
+      } catch(e) {
+        setBug(convertError(e))
       }
       // await waitFunc(200)
       // const timestamp = new Date().toTimeString().split(' ')[0]
@@ -91,14 +95,28 @@ export default function Container() {
           <Header />
           <div id="main" className=''>
             <div className='my-20'>
-            <DropdownMenu />
+            {gameMode ? (
+              <>
+              <DropdownMenu />
               {showFormState ? <Form/> : !gameStart ? <GameStart onClick={handleNextQuestion} /> :
                 <div id="wrapper">
+                  {bug ? <h2 className="font-bold drop-shadow-lg">{bug}</h2>
+                  :
+                  <>
                   {isLoading ? <h2>...Loading</h2> : <h2 className="font-bold drop-shadow-lg" id="output">{response ? response : ""}</h2>}
                   <div onClick={handlePriorQuestion}>
                   </div>
                   <div onClick={handleNextQuestion}>
                   </div >
+                  </>
+                  }
+                </div>
+                }
+              </>
+              )
+              :
+              <div className='h-full w-full justify-center items-center'>
+              <DropdownMenu />
                 </div>
               }
               </div>
@@ -107,4 +125,14 @@ export default function Container() {
       }
     </>
   )
+}
+
+
+const convertError = (error: SupaBaseError) => {
+  switch(error.name) {
+    case SupaBaseEnumError.Length:
+      return "Det er tomt i databasen, send noe inn da!"
+    default:
+      return "Noe funker ikke.."
+  }
 }

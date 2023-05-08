@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { DropDownGameModes } from '../utils/enums'
 export const useDropdown = create((set) => ({
   dropdownChoice: 'Regel',
   setDropDownChoice: (e) => set(() => ({dropdownChoice: e})),
@@ -18,4 +19,9 @@ export const useDisplayMysteriousGame = create((set) => ({
   gameMystStart: false,
   setMystGame: () => set(() => ({ gameMystStart: true})),
   endMystGame: () => set(() => ({ gameMystStart: false})),
+}))
+
+export const useSetGameMode = create((set) => ({
+  gameMode: "",
+  setGameMode: (e: DropDownGameModes) => set(() => ({ gameMode: e })),
 }))

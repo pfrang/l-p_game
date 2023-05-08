@@ -9,9 +9,6 @@ function Form(props) {
   const [content, setContent] = useState('')
   const [wordCounter, setWordCounter] = useState(0)
 
-  const handleBack = () => {
-
-  }
 
   const handleRule = (e) => {
     e.preventDefault()

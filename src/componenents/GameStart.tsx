@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Button from '../Buttons/button';
 import { FC } from 'react';
-import { useDropdown, useDisplayForm, useDisplayGame, useDisplayMysteriousGame } from '../context/context';
+import { useDropdown, useDisplayForm, useDisplayGame, useDisplayMysteriousGame, useSetGameMode } from '../context/context';
 import Form from './Forms/form';
 
 type Props = {
@@ -13,7 +13,7 @@ const GameStart: FC<Props> = (props) => {
 
   const { showFormState, showForm, hideForm } = useDisplayForm();
   const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
-  const { gameStart, setGame, endGame } = useDisplayGame();
+  const { gameMode, setGameMode } = useSetGameMode()
 
   useEffect(() => {
     if (gameMystStart) {

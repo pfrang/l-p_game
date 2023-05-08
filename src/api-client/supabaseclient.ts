@@ -1,8 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
-import { DropDownOptions } from '../interface/Typing'
+import { DropDownOptions } from '../utils/enums'
+import { SupaBaseEnumError, SupaBaseError } from '../Errors/SupabaseError';
 
+interface DbCallProps {
+  type: string;
+  content?: string;
+}
 
-export const dbCall = async (input?) => {
+export const dbCall = async (input: DbCallProps) => {
   const supabaseUrl = "https://kafiowruwxythkhdxass.supabase.co"
 
   // const supabaseKey = process.env.SUPABASE_KEY
@@ -53,6 +58,7 @@ export const dbCall = async (input?) => {
 
 
   const readData = async () => {
+
     const { type } = input
     try {
       if (type === "Mix") {
@@ -65,10 +71,13 @@ export const dbCall = async (input?) => {
           .from('questions')
           .select('content')
           .eq('type', type)
+        if(data?.length === 0 ) {
+          throw new SupaBaseError(SupaBaseEnumError.Length)
+        }
         return data
       }
     } catch (e) {
-      console.error(e)
+      throw e
     }
   }
 
@@ -78,7 +87,6 @@ export const dbCall = async (input?) => {
 
   } else {
     const response = await readData();
-    console.log(response)
     const randomElement = response[Math.floor(Math.random() * response.length)].content
     return randomElement
 
