@@ -4,6 +4,7 @@ import { useDropdown } from '../context/context';
 export default function GameDone(props) {
 
   const { dropdownChoice, setDropDownChoice } = useDropdown();
+
   const set = (e) => {
     setDropDownChoice(e)
   }

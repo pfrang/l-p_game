@@ -5,11 +5,12 @@ import 'react-dropdown/style.css';
 import Header from './Header';
 import GameStart from './GameStart';
 import Form from './Forms/form';
-import { useDropdown, useDisplayForm, useSetGameMode } from '../context/context';
+import { useDropdown, useDisplayForm, useSetGameMode, useDisplaySecondDropdown } from '../context/context';
 import { useDisplayGame, useDisplayMysteriousGame } from '../context/context';
 import { dbCall } from '../api-client/supabaseclient';
 import DropdownMenu from './DropdownMenu';
 import { SupaBaseEnumError, SupaBaseError } from '../Errors/SupabaseError';
+import Button from '../Buttons/button';
 
 
 export default function Container() {
@@ -28,6 +29,10 @@ export default function Container() {
   const { gameStart, setGame, endGame } = useDisplayGame();
   const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
   const { gameMode, setGameMode } = useSetGameMode()
+
+  const { dropdownNr, setDropdownNr } = useDisplaySecondDropdown();
+
+
 
   // useEffect(() => {
   //   setDilemma()
@@ -98,6 +103,7 @@ export default function Container() {
             {gameMode ? (
               <>
               <DropdownMenu />
+
               {showFormState ? <Form/> : !gameStart ? <GameStart onClick={handleNextQuestion} /> :
                 <div id="wrapper">
                   {bug ? <h2 className="font-bold drop-shadow-lg">{bug}</h2>
@@ -116,11 +122,14 @@ export default function Container() {
               )
               :
               <div className='h-full w-full justify-center items-center'>
-              <DropdownMenu />
+                  <DropdownMenu />
                 </div>
               }
-              </div>
-          </div>
+            </div>
+            <div>
+              <Button text='Start spill!'/>
+            </div>
+           </div>
         </>
       }
     </>
