@@ -1,34 +1,46 @@
 import create from 'zustand'
-import { DropDownGameModes, GameModeOptions } from '../utils/enums'
+import {  GameModeOptions } from '../utils/enums'
+
 export const useDropdown = create((set) => ({
   dropdownChoice: 'Regel',
   setDropDownChoice: (e) => set(() => ({dropdownChoice: e})),
   // setFalse: () => set(state => true)
 }))
+
 export const useDisplayForm = create((set) => ({
   showFormState: false,
   showForm: () => set(() => ({showFormState: true})),
   hideForm: () => set(() => ({showFormState: false})),
 }))
-export const useDisplayGame = create((set) => ({
-  gameStart: false,
-  setGame: () => set(() => ({gameStart: true})),
-  endGame: () => set(() => ({ gameStart: false})),
+
+export const useChosenNormalGame = create((set) => ({
+  gameNormal: false,
+  setNormalGame: () => set(() => ({ gameNormal: true})),
+  endNormalGame: () => set(() => ({ gameNormal: false})),
 }))
-export const useDisplayMysteriousGame = create((set) => ({
+
+export const useChosenMysteriousGame = create((set) => ({
   gameMystStart: false,
   setMystGame: () => set(() => ({ gameMystStart: true})),
   endMystGame: () => set(() => ({ gameMystStart: false})),
 }))
 
+export const useStartGame = create((set) => ({
+  gameStart: false,
+  setStartGame: () => set(() => ({ gameStart: true })),
+  setEndGame: () => set(() => ({ gameStart: false })),
+}))
+
+export const useChosenOverratedGame = create((set) => ({
+  gameOverratedStart: false,
+  setGameOverratedStart: () => set(() => ({ setGameOverratedStart: true })),
+  setGameOverratedEnd: () => set(() => ({ setGameOverratedEnd: false })),
+}))
+
+
 export const useSetGameMode = create((set) => ({
-  gameMode: "",
+  gameMode: "Normal",
   setGameMode: (e: GameModeOptions) => set(() => ({ gameMode: e })),
 }))
 
 export type DropdownNumber = 1 | 2;
-
-export const useDisplaySecondDropdown = create((set) => ({
-  dropdownNr: 0,
-  setDropdownNr: (number: DropdownNumber) => set(() => ({ dropdownNr: number })),
-}))

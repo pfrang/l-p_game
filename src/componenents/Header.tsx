@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
-import Dropdown from 'react-dropdown';
-import Button from '../Buttons/button';
-import { useDisplayGame, useDisplayMysteriousGame } from '../context/context';
-import { Router } from 'express';
+import React from 'react';
+import { useStartGame } from '../context/context';
 
 
 function Header(props) {
 
-  const { gameMystStart, setMystGame, endMystGame } = useDisplayMysteriousGame();
-  const { gameStart, setGame, endGame } = useDisplayGame();
+  const { gameStart } = useStartGame();
 
 
   return (
