@@ -20,8 +20,6 @@ const GameStartMyst: FC<Props> = (props) => {
     }
   }, [gameMystStart])
 
-  console.log("--",showFormState);
-
 
   return (
     <div>

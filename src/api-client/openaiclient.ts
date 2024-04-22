@@ -8,7 +8,6 @@ export class OpenAICall {
 
   constructor() {
     this.apiKey = process.env.REACT_APP_OPENAI_API_KEY as string;
-    console.log(this.apiKey)
     this.OpenAIApiClient = new OpenAI({
       apiKey: this.apiKey,
       dangerouslyAllowBrowser: true
