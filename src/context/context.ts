@@ -1,4 +1,4 @@
-import create from 'zustand'
+import {create } from 'zustand'
 import {  GameModeOptions } from '../utils/enums'
 
 export const useDropdown = create((set) => ({

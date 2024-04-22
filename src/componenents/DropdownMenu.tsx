@@ -1,6 +1,6 @@
 import React, {  useEffect, useState } from 'react'
 import Dropdown from 'react-dropdown';
-import { useDropdown, useDisplayForm, useSetGameMode, DropdownNumber, useDisplaySecondDropdown, useChosenNormalGame } from '../context/context';
+import { useDropdown, useDisplayForm, useSetGameMode, DropdownNumber,  useChosenNormalGame } from '../context/context';
 import { DropDownGameModes, DropDownOptions } from '../utils/enums';
 
 interface DropDownMenuProps {
